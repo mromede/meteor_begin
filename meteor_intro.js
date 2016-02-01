@@ -9,7 +9,7 @@ if(Meteor.isClient){ //This displays only on the console
   console.log("Hello Client");
   Template.leaderboard.helpers({ //This lets us create multiple helper functions
     'player': function(){
-        return PlayersList.find();
+        return PlayersList.find({}, {sort: {score: -1, name: 1} })
     },
     'selectedClass': function(){
       var playerId = this._id;
@@ -20,15 +20,28 @@ if(Meteor.isClient){ //This displays only on the console
     }
   });
   Template.leaderboard.events({
-   // events go here
     'click .player': function(){//To SET/display id's for players
       console.log(this); 
       var playerId = this._id;
       Session.set('selectedPlayer', playerId);
       // var selectedPlayer = Session.get('selectedPlayer');
       // console.log(selectedPlayer);
+    },
+    'click .increment': function(){ //Increases the "score" variable of each element/player we select
+      var selectedPlayer = Session.get('selectedPlayer');
+      //console.log(selectedPlayer);
+      PlayersList.update(selectedPlayer, {$inc: {score: 5} });
+    },
+    'click .decrement': function(){ //Decreases the "score" variable of each element/player we select
+      var selectedPlayer = Session.get('selectedPlayer');
+      //console.log(selectedPlayer);
+      PlayersList.update(selectedPlayer, {$inc: {score: -5} });
+    },
+    'showSelectedPlayer': function(){//Returns the "name" value of the found selectedPlayer
+      var selectedPlayer = Session.get('selectedPlayer');
+      return PlayersList.findOne(selectedPlayer)
     }
-  });
+  })
 }
 
 // if(Meteor.isServer){
