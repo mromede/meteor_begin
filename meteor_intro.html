@@ -1,0 +1,30 @@
+<head>
+  <title>Leaderboard</title>
+</head>
+
+<body>
+  <h1>Leaderboard</h1>
+  {{> leaderboard}}
+  <!--{{> hello}}-->
+</body>
+<template name="leaderboard">
+<!--  {{#each player}} A Loop that goes through our objects and for each, it prints "test"-->
+<!--    test-->
+<!--{{/each}}-->
+<ul>
+  <!--<li class="first">{{#each player}}Prints out the names and appropriate scores-->
+  <!--      {{name}}: {{score}} -->
+  <!--    {{/each}}-->
+  <!--</li>-->
+ <li class="first">
+   {{#each player}}
+        {{name}}: {{score}}
+    {{/each}}
+  </li>
+</ul>
+</template> 
+
+<!--<template name="hello">-->
+<!--  <button>Click Me</button>-->
+<!--  <p>You've pressed the button {{counter}} times.</p>-->
+<!--</template>-->
