@@ -11,14 +11,22 @@ if(Meteor.isClient){ //This displays only on the console
     'player': function(){
         return PlayersList.find();
     },
-    'run': function(){
-      return PlayersList.find();  
+    'selectedClass': function(){
+      var playerId = this._id;
+      var selectedPlayer = Session.get('selectedPlayer');
+      if(playerId == selectedPlayer){
+        return "selected";
+      }
     }
   });
   Template.leaderboard.events({
-    //events go here
-    'click .first':function(){
-      alert("Looks Good!");
+   // events go here
+    'click .player': function(){//To SET/display id's for players
+      console.log(this); 
+      var playerId = this._id;
+      Session.set('selectedPlayer', playerId);
+      // var selectedPlayer = Session.get('selectedPlayer');
+      // console.log(selectedPlayer);
     }
   });
 }
