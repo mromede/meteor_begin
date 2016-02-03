@@ -40,12 +40,24 @@ if(Meteor.isClient){ //This displays only on the console
     'showSelectedPlayer': function(){//Returns the "name" value of the found selectedPlayer
       var selectedPlayer = Session.get('selectedPlayer');
       return PlayersList.findOne(selectedPlayer)
+    },
+    'click .remove':function(){
+      var selectedPlayer = Session.get('selectedPlayer');
+      PlayersList.remove(selectedPlayer);
     }
   })
   
-  Template.addPlayerForm.events({
-    'submit form': function(){
-      console.log("Can you see me?!");
+  Template.addPlayerForm.events({ //There are several ways to submit forms, so this is the safest way to make sure every "submit" event executes properly
+    'submit form': function(event){
+      event.preventDefault();//This prevents the default function and we can set it to do whatever we want
+      //console.log("Can you see me?!");
+      //console.log(event.type);
+      var playerNameVar = event.target.playerName.value;
+      console.log(playerNameVar);
+      PlayersList.insert({
+        name: playerNameVar,
+        score: 0
+      });
     }
   })
 }

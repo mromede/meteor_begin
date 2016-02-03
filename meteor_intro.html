@@ -13,25 +13,25 @@
 <!--  {{#each player}} A Loop that goes through our objects and for each, it prints "test"-->
 <!--    test-->
 <!--{{/each}}-->
- <li>Selected Player: {{showSelectedPlayer.name}}</li>
   {{#each player}}
         <!--<li class="player">{{name}}: {{score}}</li>-->
         <li class="player {{selectedClass}}">{{name}}: {{score}}</li>
   {{/each}}
-  {{#if showSelectedPlayer}}
+  <!--{{#if showSelectedPlayer}}--> 
     <li>
       <button class="increment">Give 5 points</button>
       <button class="decrement">Take 5 points</button>
+      <input type="button" class="remove" value="Remove Player">
     </li>
     <li>Selected Player: {{showSelectedPlayer.name}}</li>
-  {{/if}}
+  <!--{{/if}}-->
   </ul>
 </template> 
 
 <template name="addPlayerForm">
     <form>
-      <input type="text" name="PlayerName"/>
-      <input type="submit" value="Submit"/>
+      <input type="text" name="playerName"/>
+      <input type="submit" value="New Player"/>
     </form>
 </template>
 
