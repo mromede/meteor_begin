@@ -42,6 +42,12 @@ if(Meteor.isClient){ //This displays only on the console
       return PlayersList.findOne(selectedPlayer)
     }
   })
+  
+  Template.addPlayerForm.events({
+    'submit form': function(){
+      console.log("Can you see me?!");
+    }
+  })
 }
 
 // if(Meteor.isServer){

@@ -8,31 +8,31 @@
   <!--{{> hello}}-->
 </body> 
 <template name="leaderboard">
+  {{> addPlayerForm}}
+  <ul>
 <!--  {{#each player}} A Loop that goes through our objects and for each, it prints "test"-->
 <!--    test-->
 <!--{{/each}}-->
-<ul>
- <input type="button" class="increment" value="Give 5 Points">
- <input type="button" class="decrement" value="Take 5 Points">
  <li>Selected Player: {{showSelectedPlayer.name}}</li>
-   {{#each player}}
+  {{#each player}}
         <!--<li class="player">{{name}}: {{score}}</li>-->
-        <li class="player">{{name}}: {{score}}</li>
+        <li class="player {{selectedClass}}">{{name}}: {{score}}</li>
   {{/each}}
   {{#if showSelectedPlayer}}
+    <li>
+      <button class="increment">Give 5 points</button>
+      <button class="decrement">Take 5 points</button>
+    </li>
     <li>Selected Player: {{showSelectedPlayer.name}}</li>
-{{/if}}
-</ul>
+  {{/if}}
+  </ul>
 </template> 
 
 <template name="addPlayerForm">
-  {{> addPlayerForm}}
-  <ul>
     <form>
       <input type="text" name="PlayerName"/>
       <input type="submit" value="Submit"/>
     </form>
-  </ul>
 </template>
 
 <!--<template name="hello">-->
