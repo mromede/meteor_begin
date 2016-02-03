@@ -94,3 +94,7 @@ Meteor.methods({
 });
 }
 
+//In Meteor, all code place in a folder named "client", will only run 
+//on the client.
+//Likewise, all code placed in the server, will only run on the server.
+
